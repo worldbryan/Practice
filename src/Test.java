@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class test {
+public class Test {
 
     public static void main(String[] args) {
         List<Worker> workers = buildWorkers();
@@ -13,9 +13,7 @@ public class test {
             totalBenefit += worker.getBenefit();
             totalPay += worker.getSalary();
 
-            Boss tmpBoss = new Boss();
-            //會有問題
-            //Boss tmpBoss2 = bosses.get((worker.getBelongBoss()));
+            Boss tmpBoss = bosses.get(worker.getBelongBoss());
             int prevBene = bosses.get((worker.getBelongBoss())).getBenefit();
             int prevPay = bosses.get((worker.getBelongBoss())).getPaySalary();
             tmpBoss.setBenefit(prevBene + worker.getBenefit());
@@ -44,11 +42,11 @@ public class test {
 
     private static List buildBosses() {
         List<Boss> bosses = new ArrayList<>();
-        Boss tempboss = new Boss();
-        tempboss.setBenefit(0);
-        tempboss.setPaySalary(0);
         for (int i =0; i<10; i++) {
-            bosses.add(tempboss);
+            Boss tempBoss = new Boss();
+            tempBoss.setBenefit(0);
+            tempBoss.setPaySalary(0);
+            bosses.add(tempBoss);
         }
         return bosses;
     }
